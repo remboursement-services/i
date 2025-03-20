@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.header-image img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #00aaff;
+    font-size: 24px;
+}
+
+.operators {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.operators label {
+    cursor: pointer;
+}
+
+.operators img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.operators input[type="radio"] {
+    display: none;
+}
+
+.operators input[type="radio"]:checked + img {
+    border-color: #00aaff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="date"] {
+    display: block;
+    background-color: #fff;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: block;
+    margin-right: 10px;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: #00aaff;
+}
+
+button {
+    padding: 10px;
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #007acc;
+}
+
+.date-label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
